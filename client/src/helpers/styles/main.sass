@@ -1,14 +1,38 @@
-// IMPORTS 
+// IMPORTS
 // =======================================
 @import 'bourbon/bourbon'
 @import 'globals/globals'
 
-// WRAPPERS 
-// ======================================= 
-.wrapper 
+// WRAPPERS
+// =======================================
+.wrapper
     width: 100%
-    max-width: 720px
+    max-width: 620px
     margin: 0 auto
     padding: 0 20px
 
 // CUSTOM STYLES HERE...
+
+// Navbar
+// =======================================
+.navbar
+    background: #424242
+    +size(100%, 60px)
+    +position(fixed, 0 null null 0)
+
+    span
+        color: tint(#424242, 50%)
+
+    .btn-link
+        font-size: 0.8rem !important
+        text-decoration: none !important
+
+// List Group
+// =======================================
+.list-group
+    margin-top: 80px
+
+    .list-group-item
+        border-radius: 0 !important
+        font-size: 0.8rem !important
+        color: #757575 !important
