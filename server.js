@@ -16,6 +16,7 @@ mongoose.connection
     .on('error', err => console.log('MongoDb Connection Error: ', err));
 
 // API Routes
+app.use('/api/items', require('./routes/api/items'));
 
 // Port Listener
 const port = process.env.PORT || 4000;
