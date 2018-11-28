@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 // Initialized Express App
 app = express();
@@ -7,10 +8,14 @@ app = express();
 // Body Parser Middleware
 app.use(bodyParser.json());
 
+// MongoDB Config and Connection
+const db = require('./configs/db_config').mongodb;
+mongoose.connect(db.dbURI, db.dbOpt);
+mongoose.connection
+    .once('open', () => console.log('Connected to MongoDB...'))
+    .on('error', err => console.log('MongoDb Connection Error: ', err));
+
 // API Routes
-app.get('/', (req, res) => {
-    res.send({ message: "Test 123..." })
-});
 
 // Port Listener
 const port = process.env.PORT || 4000;
