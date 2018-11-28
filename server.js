@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 // Initialized Express App
 app = express();
@@ -9,14 +9,17 @@ app = express();
 app.use(bodyParser.json());
 
 // MongoDB Config and Connection
-const db = require('./configs/db_config').mongodb;
-mongoose.connect(db.dbURI, db.dbOpt);
+const db = require("./configs/db_config").mongodb;
+mongoose.connect(
+    db.dbURI,
+    db.dbOpt
+);
 mongoose.connection
-    .once('open', () => console.log('Connected to MongoDB...'))
-    .on('error', err => console.log('MongoDb Connection Error: ', err));
+    .once("open", () => console.log("Connected to MongoDB..."))
+    .on("error", err => console.log("MongoDb Connection Error: ", err));
 
 // API Routes
-app.use('/api/items', require('./routes/api/items'));
+app.use("/api/items", require("./routes/api/items"));
 
 // Port Listener
 const port = process.env.PORT || 4000;

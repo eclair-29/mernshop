@@ -1,7 +1,7 @@
 module.exports.mongodb = {
-    dbURI: 'mongodb://localhost/mernshop',
+    dbURI: "mongodb://localhost/mernshop",
     dbOpt: {
         useNewUrlParser: true,
         useFindAndModify: false
     }
-}
+};
