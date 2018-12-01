@@ -1,8 +1,5 @@
 const initialState = {
-    items: [
-        { id: 1, name: "Pasta" },
-        { id: 2, name: "Vinegar" },
-    ]
+    items: []
 };
 
 const itemReducer = (state = initialState, action) => {
@@ -16,9 +13,15 @@ const itemReducer = (state = initialState, action) => {
                 items
             };
 
+        case "FETCH_ITEMS":
+            return {
+                ...state,
+                items: action.payload
+            }
+
         case "DELETE_ITEM":
             const filteredID = state.items.filter(item => {
-                return item.id !== action.id
+                return item._id !== action.id
             });
 
             return {

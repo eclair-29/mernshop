@@ -1,6 +1,14 @@
+import axios from 'axios';
+
 export const deleteItem = id => {
-    return {
-        type: "DELETE_ITEM",
-        id
+    return dispatch => {
+        axios
+            .delete(`/api/items/${id}`)
+            .then(() => {
+                dispatch({
+                    type: "DELETE_ITEM",
+                    id
+                })
+            })
     }
 };

@@ -29,6 +29,7 @@ class Navbar extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.addItem(this.state);
+        this.setState({ name: "" });
     }
 
     render() {

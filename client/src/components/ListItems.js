@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { deleteItem } from '../actions/deleteItem';
+import { fetchItems } from '../actions/fetchItems';
 
 class ListItems extends Component {
+    componentDidMount() {
+        this.props.fetchItems();
+    }
+
     render() {
         const { items } = this.props;
 
@@ -14,8 +19,8 @@ class ListItems extends Component {
                         ? items.map(item => {
                             return (
                                 <ListGroupItem
-                                    key={ item.id }
-                                    onClick={ () => this.props.deleteItem(item.id) }>
+                                    key={ item._id }
+                                    onClick={ () => this.props.deleteItem(item._id) }>
                                     { item.name }
                                 </ListGroupItem>
                             )
@@ -36,7 +41,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteItem: item => dispatch(deleteItem(item))
+        deleteItem: item => dispatch(deleteItem(item)),
+        fetchItems: () => dispatch(fetchItems())
     }
 };
 
